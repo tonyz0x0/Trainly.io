@@ -58,4 +58,4 @@ password:admin
 
 SYSTEM BUILD DEMO:
 
-<img src="https://github.com/anju-james/DBMS-Trainly/blob/master/DBMS/doc/systembuild.gif" width="800" height="400" />
+<img src="https://github.com/BigTony666/Trainly.io/blob/master/doc/systembuild.gif" width="800" height="400" />
