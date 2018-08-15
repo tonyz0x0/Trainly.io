@@ -1,0 +1,44 @@
+<div ng-include="model.getInclude()"></div>
+<div class="jumbotron">
+    <h1>Topic Enrollment Statistics</h1>
+    <p>Find enrollment statistics for courses with the selected topic.</p>
+    <small>*report will match on both primary and secondary topic</small>
+</div>
+<div class="col-md-6">
+    <div class="row">
+        <form class="form-inline">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">Course Topic:</div>
+                    <select ng-model="selectedTopic" class="form-control" required>
+                        <option ng-repeat="topic in model.topics" value="{{topic.Name}}">{{topic.Name}}</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn btn-primary" ng-click="model.getEnrollmentForRelatedCourseTopicReport(selectedTopic)">View Report</button>
+        </form>
+    </div>
+</div>
+
+
+<div class="row">
+    <table width="100%" class="table table-striped ">
+        <thead>
+        <tr>
+            <th ng-repeat="(header, value) in model.enrollmentForRelatedCourseTopicReport[0]">
+                {{model.humanReadable(header)}}
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr ng-repeat="row in model.enrollmentForRelatedCourseTopicReport">
+            <td ng-repeat="cell in row">{{cell}}</td>
+        </tr>
+        <td ng-show="model.enrollmentForRelatedCourseTopicReport.length==0">
+            <p>Seems like we couldn't find anything relevant to show based on your input.</p>
+        </td>
+
+        </tbody>
+    </table>
+</div>

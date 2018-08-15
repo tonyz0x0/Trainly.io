@@ -1,0 +1,40 @@
+<div ng-include="model.getInclude()"></div>
+<div class="jumbotron">
+    <h1>Faculty Ratings</h1>
+    <p>Search for Faculties based on average course ratings.</p>
+</div>
+<div class="col-md-6">
+<div class="row">
+    <form class="form-inline">
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon">Minimum Course Rating:</div>
+                <input type="number" class="form-control" name="minRatingInput" ng-model="minAverageRating"
+                       min="1" max="5" step="1" required>
+            </div>
+        </div>
+        <button class="btn btn-primary" ng-click="model.getFacultyRankedByRatingReport(minAverageRating)">View Report</button>
+    </form>
+</div>
+</div>
+
+<div class="row">
+    <table width="100%" class="table table-striped ">
+        <thead>
+        <tr>
+            <th ng-repeat="(header, value) in model.facultyRatingReport[0]">
+                {{model.humanReadable(header)}}
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr ng-repeat="row in model.facultyRatingReport">
+            <td ng-repeat="cell in row">{{cell}}</td>
+        </tr>
+        <td ng-show="model.facultyRatingReport.length==0">
+            <p>Seems like we couldn't find anything relevant to show based on your input.</p>
+        </td>
+        </tbody>
+    </table>
+</div>

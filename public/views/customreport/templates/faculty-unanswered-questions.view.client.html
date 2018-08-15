@@ -1,0 +1,31 @@
+<div ng-include="model.getInclude()"></div>
+<div class="jumbotron">
+    <h3>Course Unanswered Questions</h3>
+    <p>Find number of questions students are waiting to be answered.</p>
+    <small>*only includes data across all the courses you offer.</small>
+</div>
+
+<div class="row">
+    <table width="100%" class="table table-striped ">
+        <thead>
+        <tr>
+            <th ng-repeat="(header, value) in model.courseQuestionsReport[0]">
+                {{model.humanReadable(header)}}
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr ng-repeat="row in model.courseQuestionsReport">
+            <td ng-repeat="cell in row">{{cell}}</td>
+        </tr>
+
+        <td ng-show="model.courseQuestionsReport.length==0">
+            <p>Seems like we couldn't find anything relevant to show based on your input.</p>
+        </td>
+
+        </tbody>
+    </table>
+</div>
+
+

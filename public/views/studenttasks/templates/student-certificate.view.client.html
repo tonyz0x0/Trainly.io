@@ -1,0 +1,21 @@
+<div ng-include="model.getInclude()"></div>
+<div class="jumbotron">
+    <h1>Course Completion Certificate</h1>
+    <p>You can take print out this page and use it as course completion certificate.</p>
+</div>
+
+<div>
+    <div style="width:800px; height:600px; padding:20px; text-align:center; border: 10px solid #787878">
+        <div style="width:750px; height:550px; padding:20px; text-align:center; border: 5px solid #787878">
+            <span style="font-size:50px; font-weight:bold">Certificate of Completion</span>
+            <br><br>
+            <span style="font-size:25px"><i>This is to certify that</i></span>
+            <br><br>
+            <span style="font-size:30px"><b>{{model.currentUser.FirstName +' '+ model.currentUser.LastName}}</b></span><br/><br/>
+            <span style="font-size:25px"><i>has completed the course</i></span> <br/><br/>
+            <span style="font-size:30px">{{model.cerificateCourse.CourseName}}</span> <br/><br/>
+            <span style="font-size:25px"><i>dated</i></span><br>
+            <span style="font-size:30px">{{model.cerificateCourse.CompletedDate*1000 | date:'short'}}</span>
+        </div>
+    </div>
+</div>

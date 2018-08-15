@@ -1,0 +1,31 @@
+<div ng-include="model.getInclude()"></div>
+<div class="jumbotron">
+    <h1>Faculty Approval</h1>
+    <p>View all Faculty signup requests awaiting validation.</p>
+</div>
+<div id="confirmModal"></div>
+<div class="row">
+    <table width="100%" class="table table-striped ">
+        <thead>
+        <tr>
+            <th ng-repeat="(header, value) in model.pendingFacultyRequests[0]">
+                {{model.humanReadable(header)}}
+            </th>
+            <th>Approve</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr ng-repeat="row in model.pendingFacultyRequests">
+            <td ng-repeat="cell in row">{{cell}}</td>
+            <td><button type="button" ng-click="model.ValidateFaculty(row.Email)" class="btn btn-primary">
+                <span class="glyphicon glyphicon-ok"></span>
+            </button></td>
+
+        </tr>
+        <td ng-show="model.pendingFacultyRequests.length==0">
+            <p>Seems like you don't have any more pending requests.</p>
+        </td>
+        </tbody>
+    </table>
+</div>

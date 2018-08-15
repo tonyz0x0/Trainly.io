@@ -1,0 +1,50 @@
+<div ng-include="model.getInclude()"></div>
+<div class="jumbotron">
+    <h1>Quiz Answers</h1>
+    <p>Read through student quiz answers. Filter by student score.</p>
+    <small>*only includes data across all the courses you offer.</small>
+</div>
+<div class="col-md-6">
+    <div class="row">
+        <form class="form-inline">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">Indication:</div>
+                    <select ng-model="indication" ng-options="opt for opt in ['correct','incorrect']" class="form-control" required>
+                        <option></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">Minimum Score:</div>
+                    <input type="number" class="form-control" name="minScoreInput" ng-model="minQuizScore"
+                           min="0" max="100" step="1"required>
+                </div>
+            </div>
+            <button class="btn btn-primary" ng-click="model.getFacultyCourseStudentAnswers(indication,minQuizScore)">View Report</button>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <table width="100%" class="table table-striped ">
+        <thead>
+        <tr>
+            <th ng-repeat="(header, value) in model.studentCourseAnswersReport[0]">
+                {{model.humanReadable(header)}}
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr ng-repeat="row in model.studentCourseAnswersReport">
+            <td ng-repeat="cell in row">{{cell}}</td>
+        </tr>
+        <td ng-show="model.studentCourseAnswersReport.length==0">
+            <p>Seems like we couldn't find anything relevant to show based on your input.</p>
+        </td>
+
+        </tbody>
+    </table>
+</div>

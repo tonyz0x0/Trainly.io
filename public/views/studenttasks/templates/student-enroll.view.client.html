@@ -1,0 +1,28 @@
+<div ng-include="model.getInclude()"></div>
+<div class="jumbotron">
+    <h1>Student Courses</h1>
+    <p>Categorized list of student courses</p>
+    <small>*ranked by average evaluation score.
+        some data may be missing</small>
+</div>
+<div class="row">
+    <table width="100%" class="table table-striped ">
+        <thead>
+        <tr>
+            <th ng-repeat="(header, value) in model.studentOpenCourses[0]">
+                {{model.humanReadable(header)}}
+            </th>
+            <th>Enroll</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr ng-repeat="row in model.studentOpenCourses">
+            <td ng-repeat="cell in row">{{cell}}</td>
+            <td><button type="button" ng-click="model.StudentEnrollCourse(row.CourseId)" class="btn btn-primary">
+                <span class="glyphicon glyphicon-ok"></span>
+            </button></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,46 @@
+<div ng-include="model.getInclude()"></div>
+<div class="jumbotron">
+    <h1>Student Courses</h1>
+    <p>Categorized list of student courses</p>
+    <p>You can download certificates for completed courses.</p>
+    <small>*ranked by average evaluation score.
+        some data may be missing</small>
+</div>
+<div class="row">
+    <table width="100%" class="table table-striped ">
+        <thead>
+        <tr>
+            <th ng-repeat="(header, value) in model.studentCourseList[0]">
+                {{model.humanReadable(header)}}
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr ng-repeat="row in model.studentCourseList">
+            <td ng-repeat="cell in row">
+                <div  ng-switch on="cell">
+                    <div ng-switch-when="Enrolled">
+                        <span class="label label-primary">Enrolled</span></div>
+                    <div ng-switch-when="Completed">
+                        <span class="label label-success">Completed</span>
+                    </div>
+                    <div ng-switch-when="Interested">
+                        <span class="label label-info">Interested</span></div>
+                    <div ng-switch-default>{{cell}}</div>
+                </div>
+            </td>
+            <td ng-repeat="cell in row">
+                <div  ng-switch on="cell">
+                    <div ng-switch-when="Completed">
+                        <a type="button" href="#!/student/course/certificate/{{row.CourseId}}" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-download"> Certificate </span>
+                        </a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

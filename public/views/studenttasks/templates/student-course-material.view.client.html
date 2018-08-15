@@ -1,0 +1,57 @@
+<div ng-include="model.getInclude()"></div>
+<div class="jumbotron">
+    <h1>Course Material Progress</h1>
+    <p>List materials and its completion status for currently enrolled courses.</p>
+    <p>Manually mark any non-completed material as completed by pressing the action button.</p>
+</div>
+<div class="col-md-6">
+    <div class="row">
+        <form class="form-inline">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon">Enrolled Course Topic:</div>
+                    <select ng-model="selectedCourse" class="form-control" required>
+                        <option ng-repeat="course in model.studentEnrolledCourses" value="{{course.CourseId}}">{{course.CourseName}}</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn btn-primary" ng-click="model.GetCourseMaterialStatus(selectedCourse)">View Report</button>
+        </form>
+    </div>
+</div>
+
+
+<div class="row">
+    <table width="100%" class="table table-striped ">
+        <thead>
+        <tr ng-show="model.studentCourseMaterialStatus.length>0">
+            <th>Material Name</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr ng-repeat="row in model.studentCourseMaterialStatus">
+            <td>{{row.MaterialName}}</td>
+            <td><div  ng-switch on="row.Status">
+                <div ng-switch-when="completed">
+                    <span class="label label-success">Completed</span></div>
+                <div ng-switch-default>
+                    <span class="label label-warning">Not Completed</span>
+                </div>
+            </div></td>
+            <td><div  ng-switch on="row.Status">
+                <div ng-switch-when="not completed">
+                    <button type="button" ng-click="model.MarketCourseMaterialCompleted(row.MaterialId,row.CourseId)" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-ok"> Mark Completed</span></button>
+                </div></div></td>
+
+        </tr>
+        <td ng-show="model.studentCourseMaterialStatus.length==0">
+            <p>Seems like we couldn't find anything relevant to show based on your input.</p>
+        </td>
+
+        </tbody>
+    </table>
+</div>

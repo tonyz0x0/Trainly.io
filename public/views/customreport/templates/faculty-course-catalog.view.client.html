@@ -1,0 +1,24 @@
+<div ng-include="model.getInclude()"></div>
+<div class="jumbotron">
+    <h1>Course Catalog</h1>
+    <p>Find current course offerings, course creator and the course statistics.</p>
+    <small>*missing data is left blank</small>
+</div>
+<div class="row">
+    <table width="100%" class="table table-striped ">
+        <thead>
+        <tr>
+            <th ng-repeat="(header, value) in model.facultyCourseCatalogReport[0]">
+                {{model.humanReadable(header)}}
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr ng-repeat="row in model.facultyCourseCatalogReport">
+            <td ng-repeat="cell in row">{{cell}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+

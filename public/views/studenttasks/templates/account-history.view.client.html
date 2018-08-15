@@ -1,0 +1,30 @@
+<div ng-include="model.getInclude()"></div>
+<div class="jumbotron">
+    <h1>Account History</h1>
+    <p>Courses Enrolled And Payments</p>
+    <small>*missing data will be left blank</small>
+</div>
+<div class="row">
+    <table width="100%" class="table table-striped ">
+        <thead>
+        <tr>
+            <th ng-repeat="(header, value) in model.studentAccountHistory.History[0]">
+                {{model.humanReadable(header)}}
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr ng-repeat="row in model.studentAccountHistory.History">
+            <!--<td ng-repeat="cell in row">{{cell}}</td>-->
+            <td>{{row.CourseID}}</td>
+            <td>{{row.CourseName}}</td>
+            <td>{{row.EnrolledDate != null ? (row.EnrolledDate*1000 | date:'medium'): null}}</td>
+            <td>{{row.CompletedDate != null ? (row.CompletedDate*1000 | date:'medium'): null}}</td>
+            <td>{{row.PaymentCode}}</td>
+            <td>${{row.Amount}}</td>
+        </tr>
+        </tbody>
+    </table>
+    <h3>Total Spend: ${{model.studentAccountHistory.TotalSpent}}</h3>
+</div>
