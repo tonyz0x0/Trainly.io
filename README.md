@@ -1,5 +1,8 @@
-The mission of Trainly.io is to be the App Store of training: organizations collaborate with faculty to create and securely post materials (for free!); students find, enroll in, and complete useful courses (with the ability to certify completion to employers); and Trainly.io only charges 30% of any course-enrollment fees!
+<h1 align="center">
+Trainly.io  
+</h1>
 
+The mission of Trainly.io is to be the App Store of training: organizations collaborate with faculty to create and securely post materials (for free!); students find, enroll in, and complete useful courses (with the ability to certify completion to employers); and Trainly.io only charges 30% of any course-enrollment fees!
 
 The website was build using nodejs as the backend talking to a MariaDB database.
 The application frontend was developed using angularjs and bootstrap.
@@ -18,17 +21,20 @@ REQUIRED SOFTWARES:
 SYSTEM BUILD:
 
 Clone git repo:
-```
-    git clone https://github.com/anju-james/DBMS-Trainly.git
+
+```sh
+    git clone git@github.com:BigTony666/Trainly.io.git
 ```
 
 Change to project folder:
-```
-    cd DBMS-Trainly/DBMS/
+
+```sh
+    cd Trainly.io
 ```
 
 Run SQL:  
-```
+
+```sh
       sql/DDL.sql           /*will create the schema*/
       sql/DML.sql           /*populate data*/
       sql/USER_CREATE.sql   /* create database user */

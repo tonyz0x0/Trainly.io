@@ -1,10 +1,15 @@
-var app = require('./express');
-var cookieParser = require('cookie-parser');
-var session      = require('express-session');
-var passport = require('passport');
-var bodyParser = require('body-parser');
-var jsonwebtoken = require("jsonwebtoken");
+// const Koa = require('koa');
+// const router = require('koa-router')();
+// const bodyParser = require('koa-bodyparser');
+// const staticFiles = require('koa-static');
+const app = require('./express');
+const bodyParser = require('body-parser');
+const session      = require('express-session');
+const passport = require('passport');
+const jsonwebtoken = require("jsonwebtoken");
+const cookieParser = require('cookie-parser');
 
+// const app = new Koa();
 
 require('dotenv').config();
 
@@ -27,4 +32,6 @@ require("./server/app");
         next();
     }
 });*/
-app.listen(process.env.PORT || 8800);
+app.listen(process.env.PORT || 8800, () => {
+    console.log(`server is running at localhost:${process.env.PORT || 8800}`);
+});
